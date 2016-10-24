@@ -1,0 +1,53 @@
+<div class="container">
+	<div class="row">
+		<button ng-click="goBack()" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;"class="glyphicon glyphicon-arrow-left"></span>Volver</button>
+		<button ng-click="showAdvanced($event)" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;"class="glyphicon glyphicon-plus"></span>Nuevo Cliente</button>		
+	</div>
+	
+
+<div class="row"  style="background:white; margin-top:30px;">
+	<table st-table="rowCollection" class="table table-striped" >
+		<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Typo</th>
+			<th>Dni</th>
+			<th>Telefono</th>
+			<th>Direccion</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="row in rowCollection">
+			<td>{{row.name}}</td>
+			<td>{{row.type}}</td>
+			<td>{{row.dni}}</td>
+			<td>{{row.telefono}}</td>
+			<td>{{row.direccion}}</td>
+			<td>
+				<button type="button" ng-click="openClientModule()" class="btn btn-sm btn-primary">
+					<i class="glyphicon glyphicon-list-alt"></i>
+				</button>
+			</td>
+			<td>
+				<button type="button" ng-click="" class="btn btn-sm btn-default">
+					<i class="glyphicon glyphicon-envelope"></i>
+				</button>
+			</td>
+			<td>
+				<button type="button" ng-click="" class="btn btn-sm btn-info">
+					<i class="glyphicon glyphicon-pencil"></i>
+				</button>
+			</td>
+			<td>
+				<button type="button" ng-click="" class="btn btn-sm btn-danger">
+					<i class="glyphicon glyphicon-remove-circle"></i>
+				</button>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+<cl-paging flex style="padding:10px;" cl-pages="paging.total" , cl-steps="6" , cl-page-changed="paging.onPageChanged()" , cl-align="center center" , cl-current-page="paging.current"></cl-paging>
+	</div>
+
+
+</div>

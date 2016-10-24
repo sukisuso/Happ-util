@@ -1,0 +1,13 @@
+{
+  "appName": "Quevec_fw_1.0.0",
+  "version": "1.0.0",
+  "autor": "Jesus Juan Aguilar",
+  "description": "Framework JS Quevec",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "crypto": "0.0.3",
+    "express": "^4.13.3",
+    "helmet": "2.3.0",
+    "mongoose": "4.6.4"
+  }
+}
