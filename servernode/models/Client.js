@@ -15,8 +15,9 @@ module.exports = function (mongoose) {
 	    telefono: { type: Number, required: false },
 	    postal: { type: Number, required: false },
 	    comentario: { type: String, required: false },
-	    numero: { type: String, required: false },
-	    cuota: { type: Number, required: false }
+	    numero: { type: Number, required: false },
+	    cuota: { type: Number, required: false },
+	    entity: { type: String, required: false, index: { unique: true } }
 	});
 
     return mongoose.model('Client', Client);

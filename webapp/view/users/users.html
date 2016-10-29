@@ -1,11 +1,40 @@
 <div class="container">
-	<div class="row">
-		<button ng-click="goBack()" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;"class="glyphicon glyphicon-arrow-left"></span>Volver</button>
-		<button ng-click="showAdvanced($event)" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;"class="glyphicon glyphicon-plus"></span>Nuevo Cliente</button>		
+<div class="row">
+	<div class="panel  panel-info">
+		  <div class="panel-heading" style="font-size:30px;">Clientes
+			 <div style="float: right;">
+				<button ng-click="goBack()" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;"class="glyphicon glyphicon-arrow-left"></span>Volver</button>
+		<button ng-click="showAdvanced($event)" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;"class="glyphicon glyphicon-plus"></span>Nuevo Cliente</button>
+				 </div>
+			 </div>
+		  <div class="panel-body" style="padding:20px;padding-left:50px;padding-right:50px;">
+		    
+	<div class="row" style="margin-top:15px;">
+		<form ng-cloak>
+			<div class="form-group row">
+              <div class="col-xs-3">
+                <input ng-model="filters.name" class="form-control" type="text"  id="example-text-input" placeholder="Filtrar por nombre" required>
+              </div>
+              <div class="col-xs-3">
+              	<input ng-model="filters.dni" class="form-control" type="text" id="example-text-input" placeholder="Filtrar por dni" >
+              </div>
+              <div class="col-xs-3">
+	              <select ng-model="filters.type" class="form-control" required>
+	                <option value="" disabled selected>Filtrar por tipo</option>
+	                <option>Persona juridica</option>
+	                <option>Empresa</option>
+	                <option>Comunidad de vecinos</option>
+	              </select>
+              </div>
+                <div class="col-xs-3">
+              <button ng-click="filtrar();" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;"class="glyphicon glyphicon-search"></span>Filtrar</button>
+               <button ng-click="clean();" type="button" class="btn btn-default">Limpiar</button>
+              </div>	
+          </div>
+		</form>
 	</div>
-	
 
-<div class="row"  style="background:white; margin-top:30px;">
+<div class="row" style="background:white; margin-top:10px;">
 	<table st-table="rowCollection" class="table table-striped" >
 		<thead>
 		<tr>
@@ -14,6 +43,7 @@
 			<th>Dni</th>
 			<th>Telefono</th>
 			<th>Direccion</th>
+			<th>Cod. Postal</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -23,8 +53,9 @@
 			<td>{{row.dni}}</td>
 			<td>{{row.telefono}}</td>
 			<td>{{row.direccion}}</td>
+			<td>{{row.postal}}</td>
 			<td>
-				<button type="button" ng-click="openClientModule()" class="btn btn-sm btn-primary">
+				<button type="button" ng-click="openClientModule(row)" class="btn btn-sm btn-primary">
 					<i class="glyphicon glyphicon-list-alt"></i>
 				</button>
 			</td>
@@ -34,12 +65,12 @@
 				</button>
 			</td>
 			<td>
-				<button type="button" ng-click="" class="btn btn-sm btn-info">
+				<button type="button" ng-click="openEditWindow(row)" class="btn btn-sm btn-info">
 					<i class="glyphicon glyphicon-pencil"></i>
 				</button>
 			</td>
 			<td>
-				<button type="button" ng-click="" class="btn btn-sm btn-danger">
+				<button type="button" ng-click="deleteItem(row)" class="btn btn-sm btn-danger">
 					<i class="glyphicon glyphicon-remove-circle"></i>
 				</button>
 			</td>
@@ -48,6 +79,7 @@
 	</table>
 <cl-paging flex style="padding:10px;" cl-pages="paging.total" , cl-steps="6" , cl-page-changed="paging.onPageChanged()" , cl-align="center center" , cl-current-page="paging.current"></cl-paging>
 	</div>
-
-
+</div>
+</div>
+</div>
 </div>

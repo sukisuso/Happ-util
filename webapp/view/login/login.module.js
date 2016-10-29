@@ -8,12 +8,12 @@ login.controller("loginController", function loginController($scope, $location,$
 	$scope.nick = "";
 	$scope.pass = "";
 
-	$scope.loginUser = function () {
+	$scope.loginUser = function (isLoged) {
 		
 		$http({
 	        url: '/login/processLogin',
 	        method: "POST",
-	        data: { 'user' : $scope.nick, "pasword": $scope.pass}
+	        data: { 'user' : $scope.nick, "pasword": $scope.pass, 'isLoged': isLoged}
 	    })
        .then(function(result) {
        		if(result.data){
@@ -26,7 +26,6 @@ login.controller("loginController", function loginController($scope, $location,$
 			}
         });
 	};
-
 
 });
 

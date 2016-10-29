@@ -1,1 +1,206 @@
-<h2>Cliente</h2>
+<div class="container">
+	<div class="row">
+		<div class="panel  panel-info">
+		 <div class="panel-heading" style="font-size:30px;">{{ clientInfo.name }}
+			 <div style="float: right;">
+				 <button ng-click="goBack()" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;margin-left:15px;"class="glyphicon glyphicon-arrow-left"></span>Volver</button> 
+				 <button ng-click="showComent()" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;margin-left:15px;"class="glyphicon glyphicon-paperclip"></span>Ver comentario</button> 
+				 </div>
+			 </div>
+		  <div class="panel-body">
+		  <div class="row">
+		   <div class="col-md-6">
+            <strong>Clinte</strong><br>
+            <div class="table-responsive">
+            <table class="table table-condensed table-responsive table-user-information">
+                <tbody>
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-user  text-primary"></span>
+                                Nombre                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ clientInfo.name }}     
+                        </td>
+                    </tr>
+                    <tr>    
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-sort-by-alphabet  text-primary"></span>    
+                                Apellidos                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ clientInfo.surname }}     
+                        </td>
+                    </tr>
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-star text-primary"></span>  
+                                Tipo                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ clientInfo.type }}  
+                        </td>
+                    </tr>
+
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-send text-primary"></span> 
+                                Email                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ clientInfo.email }} 
+                        </td>
+                    </tr>
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-tag text-primary"></span> 
+                                Direccion                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ clientInfo.direccion }}
+                        </td>
+                    </tr>                            
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <br>
+            <div class="table-responsive">
+            <table class="table table-condensed table-responsive table-user-information">
+                <tbody>
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-tag  text-primary"></span>
+                                Localidad                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ clientInfo.localidad }}     
+                        </td>
+                    </tr>
+                    <tr>    
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-phone  text-primary"></span>    
+                                telefono                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ clientInfo.telefono }}     
+                        </td>
+                    </tr>
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-cloud text-primary"></span>  
+                                Codigo postal                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ clientInfo.postal }}  
+                        </td>
+                    </tr>
+
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-sd-video text-primary"></span> 
+                                Nº de deudores                                              
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ clientInfo.numero }} 
+                        </td>
+                    </tr>
+
+
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-usd text-primary"></span> 
+                                Cuota                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            {{ clientInfo.cuota }}
+                        </td>
+                    </tr>                                  
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    </div>
+		  </div>
+		</div>
+
+		<div class="row">
+		<div class="panel  panel-info">
+			 <div class="panel-heading" style="font-size:30px;">Transacciones
+			 <div style="float: right;">
+				 <button ng-click="showtransaction($event)" type="button" class="btn btn-default"><span style="color:green; margin-left:5px;"class="glyphicon glyphicon-plus"></span>Nueva Transacción</button></div>
+			 </div>
+			 <div class="panel-body"  style="padding:20px;padding-left:50px;padding-right:50px;">
+			 	<div class="row" style="background:white;">
+						<table st-table="rowCollection" class="table table-striped" >
+							<thead>
+							<tr>
+								<th>Fecha</th>
+								<th>Cantidad</th>
+								<th>Tipo</th>
+								<th>Descripcion</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr ng-repeat="row in rowCollection" ng-class="row.type ==='Ingreso' ? 'esIngreso': 'esGasto'">
+								<td>{{row.date | date : "dd.MM.y"}}</td>
+								<td >{{row.cant}} €</td>
+								<td>{{row.type}}</td>
+								<td>{{row.desc}}</td>
+                                <td>
+                                    <button type="button" ng-click="edittransaction(row)" class="btn btn-sm btn-info">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" ng-click="deleteItem(row)" class="btn btn-sm btn-danger">
+                                        <i class="glyphicon glyphicon-remove-circle"></i>
+                                    </button>
+                                </td>
+							</tr>
+							</tbody>
+						</table>
+					<cl-paging flex style="padding:10px;" cl-pages="paging.total" , cl-steps="6" , cl-page-changed="paging.onPageChanged()" , cl-align="center center" , cl-current-page="paging.current"></cl-paging>
+						</div>
+			</div> 
+		</div> 
+	</div> 
+
+	<div class="row" style="margin-bottom:50px;">
+		<div class="panel  panel-info">
+			 <div class="panel-heading" style="font-size:30px;">Otras opciones
+			 <div class="panel-body" style="padding:20px;padding-left:50px;padding-right:50px;">
+			 <button ng-click="openStats()" type="button" class="btn btn-lg btn-primary"></span>Estadisticas</button>
+			 <button ng-if="!clientInfo.entity" type="button" ng-click="createPortal()" class="btn btn-lg btn-primary"></span>Crear portal</button>
+              <button ng-if="clientInfo.entity" type="button" class="btn btn-lg btn-primary"></span>Ver portal</button>
+               <button ng-if="clientInfo.entity" type="button" class="btn btn-lg btn-primary"></span>Eliminar portal</button>
+			 <button type="button" class="btn btn-lg btn-primary"></span>Generar informe</button>
+			 <button type="button" class="btn btn-lg btn-primary"></span>Facturación</button>
+			</div> </div>
+		</div> 
+	</div> 
+	</div>	
+
+		

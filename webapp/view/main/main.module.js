@@ -21,4 +21,8 @@ main.controller("mainController", function appController($scope,$location, userS
 	$scope.loadModuleCalendar = function loadModuleCalendar(){
 		$location.url("/calendar");
 	}
+
+	$scope.loadModuleMensajes = function loadModuleMensajes(){
+		$location.url("/mensajes");
+	}
 });

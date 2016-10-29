@@ -1,5 +1,5 @@
 
-var app = angular.module("app", ['ngRoute','login', 'main', 'users', 'calendar', 'client']);
+var app = angular.module("app", ['ngRoute','login', 'main', 'users', 'calendar', 'client', 'mensajes', 'stats']);
 
 app.config(function($routeProvider){
 	$routeProvider.when("/", {
@@ -22,9 +22,19 @@ app.config(function($routeProvider){
 		 controller : "calendarController"
 	})
 
-	.when("/client", {
+	.when("/client/:param1/", {
 		 templateUrl : "view/client/client.html",
 		 controller : "clientController"
+	})
+
+	.when("/mensajes", {
+		 templateUrl : "view/mensajes/mensajes.html",
+		 controller : "mensajesController"
+	})
+
+	.when("/stats/:param1/", {
+		 templateUrl : "view/stats/stats.html",
+		 controller : "statsController"
 	})
  	.otherwise({ redirectTo : "/"})
 });

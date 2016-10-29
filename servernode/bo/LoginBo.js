@@ -19,7 +19,6 @@ function StartPaths(app, mongoose){
 }
 
 function processLogin(req, res) {
-
 	authentication(req.body.user, req.body.pasword, res);
 }
 						
@@ -53,11 +52,11 @@ function authentication (username, password, res){
        if (!user){
        		res.send(false);
 	   		res.end();
-       }else{
+       }else {
 	       if (crypt.encrypt(password) === user.pasword){
-	     	res.setHeader('Content-Type', 'application/json');
-			res.send(user);
-			res.end();
+	     		res.setHeader('Content-Type', 'application/json');
+				res.send(user);
+				res.end();
 	       }else{
 	       		res.send(false);
 		   		res.end();
