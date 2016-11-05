@@ -14,8 +14,8 @@ function StartPaths(app, mongoose){
 	User = require('../models/User')(mongoose);
 	ObjectId = mongoose.Types.ObjectId;
 
-	app.post('/login/processLogin', function(req, res) {processLogin(req,res);});
-	app.post('/login/insertUser', function(req, res) {insertUser(req,res);});
+	app.post('/login/processLogin', processLogin);
+	app.post('/login/insertUser', insertUser);
 }
 
 function processLogin(req, res) {

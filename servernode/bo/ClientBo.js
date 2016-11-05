@@ -12,12 +12,14 @@ function StartPaths(app, mongoose){
 	Client = require('../models/Client')(mongoose);
 	ObjectId = mongoose.Types.ObjectId;
 
-	app.post('/clients/getAllClients', function(req, res) {getAllClients(req,res);});
-	app.post('/clients/insertClient', function(req, res) {insertClient(req,res);});
-	app.post('/clients/deleteClient', function(req, res) {deleteClient(req,res);});
-	app.post('/clients/updateClient', function(req, res) {updateClient(req,res);});
-	app.post('/clients/getOneClient', function(req, res) {getOneClient(req,res);});
-	app.post('/clients/updateEntity', function(req, res) {updateEntity(req,res);});
+	app.post('/clients/getAllClients',getAllClients);
+	app.post('/clients/insertClient', insertClient);
+	app.post('/clients/deleteClient', deleteClient);
+	app.post('/clients/updateClient', updateClient);
+	app.post('/clients/getOneClient', getOneClient);
+	app.post('/clients/updateEntity', updateEntity);
+	app.post('/clients/getPortales',  getPortales);
+	app.post('/clients/deleteEntity', deleteEntity);
 }
 
 function getAllClients(req, res) {
@@ -25,7 +27,7 @@ function getAllClients(req, res) {
 	var query = {};
 	query.gestorId = req.body.gestorId;
 	if(req.body.filters.name){
-		query.name = {$regex:req.body.filters.name}; 
+		query.$or = [{'name': {$regex:req.body.filters.name}}, {'surname': {$regex:req.body.filters.name}}];
 	}
 	if(req.body.filters.dni){
 		query.dni ={$regex:req.body.filters.dni};
@@ -149,6 +151,54 @@ function updateEntity (req, res ){
 			});
 		}
 	});
+}
+
+function getPortales (req, res){
+
+	var query = {};
+	query.gestorId = req.body.gestorId;
+	if(req.body.filters.name){
+		query.$or = [{'name': {$regex:req.body.filters.name}}, {'surname': {$regex:req.body.filters.name}}];
+	}
+	if(req.body.filters.portal){
+		query.entity ={$regex:req.body.filters.portal};
+	}else{
+		query.entity= { $exists: true };
+	}
+	
+
+	Client.count(query, function( err, count){
+	   Client.find(query,{} 
+	   	,{ skip:req.body.init, limit: req.body.page }, 
+	   	function (err, docs) {
+			if (!err) {
+				var response = {};
+				response.total =count;
+				response.clients = docs;
+				res.setHeader('Content-Type', 'application/json');
+				res.send(JSON.stringify(response));
+				res.end();
+			} else {
+				res.status(500).send({ error: '[Error: Servers Mongo] Fallo recuperando datos.'});
+				res.end();
+			}
+		});
+	});
+
+}
+
+function deleteEntity (req, res ){
+
+  	Client.findOneAndUpdate({ _id: ObjectId(req.body._id) },
+	{ 
+	 	$unset: {entity: 1 }
+	}
+	, function(err, user) {
+	  if (err) throw err;
+	  	res.send(true);
+		res.end();
+	});
+		
 }
 
 exports.startPaths = StartPaths;

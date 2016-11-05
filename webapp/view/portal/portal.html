@@ -1,0 +1,60 @@
+<div class="container">
+<div class="row">
+	<div class="panel  panel-info">
+		 <div class="panel-heading" style="font-size:30px;">Portales
+			 <div style="float: right;">
+				 <button ng-click="goBack()" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;margin-left:15px;"class="glyphicon glyphicon-arrow-left"></span>Volver</button> 
+				 </div>
+			 </div>
+		  <div class="panel-body" style="padding:20px;padding-left:50px;padding-right:50px;">
+
+		  <div class="row" style="margin-top:15px;">
+		<form ng-cloak>
+			<div class="form-group row">
+              <div class="col-xs-4">
+                <input ng-model="filters.portal" class="form-control" type="text"  id="example-text-input" placeholder="Filtrar por portal" required>
+              </div>
+              <div class="col-xs-4">
+              	<input ng-model="filters.name" class="form-control" type="text" id="example-text-input" placeholder="Filtrar por nombre">
+              </div>
+                <div class="col-xs-3">
+              <button ng-click="filtrar();" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;"class="glyphicon glyphicon-search"></span>Filtrar</button>
+               <button ng-click="clean();" type="button" class="btn btn-default">Limpiar</button>
+              </div>	
+          </div>
+		</form>
+	</div>
+
+<div class="row"  style="background:white;">
+	<table st-table="rowCollection" class="table table-striped" >
+		<thead>
+		<tr>
+			<th>Portal</th>
+			<th>Cliente</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="row in rowCollection">
+			<td>{{row.entity}}</td>
+			<td>{{row.name +" "+ row.surname}}</td>
+			<td>
+				<button type="button" ng-click="openPortal(row)" class="btn btn-sm btn-default">
+					<i class="glyphicon glyphicon-globe"></i>
+				</button>
+			</td>
+			<td>
+				<button type="button" ng-click="deletePortal(row)" class="btn btn-sm btn-danger">
+					<i class="glyphicon glyphicon-remove-circle"></i>
+				</button>
+			</td>
+			
+		</tr>
+		</tbody>
+	</table>
+<cl-paging flex style="padding:10px;" cl-pages="paging.total" , cl-steps="6" , cl-page-changed="paging.onPageChanged()" , cl-align="center center" , cl-current-page="paging.current"></cl-paging>
+	</div>
+
+</div>
+</div>
+</div>
+</div>

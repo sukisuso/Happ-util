@@ -1,0 +1,53 @@
+<div class="container">
+
+	<div class="row">
+	<div class="panel  panel-info">
+		 <div class="panel-heading" style="font-size:30px;">Documentos de {{ clientInfo.name }}
+		 <div style="float: right;">
+			<button ng-click="goBack()" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;margin-left:15px;"class="glyphicon glyphicon-arrow-left"></span>Volver</button> </div>
+		 </div>
+		 <div class="panel-body"  style="padding:20px;padding-left:50px;padding-right:50px;">
+		 	<div class="row">
+		 		<form ng-submit="updateFile()" enctype="multipart/form-data">
+		 		<div class="form-group">
+				  <label class="control-label">Select File</label>
+				  <input type="file" onchange="angular.element(this).scope().filesChanged(this)" type="file" class="form-control" accept="application/pdf" style="margin-bottom:5px;">
+				  <input class="btn btn-default" type="submit" value="Upload file">
+				  </div>
+				</form>
+		 	</div>
+		 	<div class="row" style="background:white;">
+					<table st-table="rowCollection" class="table table-striped" >
+						<thead>
+						<tr>
+							<th>Fecha</th>
+							<th>Nombre</th>
+							<th>Tamaño</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr ng-repeat="row in rowCollection">
+							<td>{{row.date | date : "dd.MM.y"}}</td>
+							<td >{{row.filename}}</td>
+							<td>{{row.size}}</td>
+                            <td>
+                                <button type="button" ng-click="viewDoc(row)" class="btn btn-sm btn-info">
+                                    <i class="glyphicon glyphicon-modal-window"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" ng-click="deleteDocument(row)" class="btn btn-sm btn-danger">
+                                    <i class="glyphicon glyphicon-remove-circle"></i>
+                                </button>
+                            </td>
+						</tr>
+						</tbody>
+					</table>
+				<cl-paging flex style="padding:10px;" cl-pages="paging.total" , cl-steps="6" , cl-page-changed="paging.onPageChanged()" , cl-align="center center" , cl-current-page="paging.current"></cl-paging>
+					</div>
+		</div> 
+	</div> 
+	</div> 
+</div>	
+
+		

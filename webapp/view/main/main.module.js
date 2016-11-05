@@ -25,4 +25,8 @@ main.controller("mainController", function appController($scope,$location, userS
 	$scope.loadModuleMensajes = function loadModuleMensajes(){
 		$location.url("/mensajes");
 	}
+
+	$scope.loadModulePortal = function loadModulePortal(){
+		$location.url("/portal");
+	}
 });

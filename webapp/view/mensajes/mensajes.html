@@ -1,0 +1,47 @@
+<div class="container">
+<div class="row">
+	<div class="panel  panel-info">
+		 <div class="panel-heading" style="font-size:30px;">Mensajes
+			 <div style="float: right;">
+				 <button ng-click="goBack()" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;margin-left:15px;"class="glyphicon glyphicon-arrow-left"></span>Volver</button> 
+				 </div>
+			 </div>
+		  <div class="panel-body" style="padding:20px;padding-left:50px;padding-right:50px;">
+
+<div class="row"  style="background:white;">
+	<table st-table="rowCollection" class="table table-striped" >
+		<thead>
+		<tr>
+			<th>Fecha</th>
+			<th>Origen</th>
+			<th>Asunto</th>
+			<th>Estado</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="row in rowCollection">
+			<td>{{row.date}}</td>
+			<td>{{row.origin}}</td>
+			<td>{{row.subject}}</td>
+			<td>{{row.status}}</td>
+			<td>
+				<button type="button" ng-click="" class="btn btn-sm btn-default">
+					<i class="glyphicon glyphicon-eye-close"></i>
+				</button>
+			</td>
+			<td>
+				<button type="button" ng-click="deleteItem(row)" class="btn btn-sm btn-danger">
+					<i class="glyphicon glyphicon-remove-circle"></i>
+				</button>
+			</td>
+			
+		</tr>
+		</tbody>
+	</table>
+<cl-paging flex style="padding:10px;" cl-pages="paging.total" , cl-steps="6" , cl-page-changed="paging.onPageChanged()" , cl-align="center center" , cl-current-page="paging.current"></cl-paging>
+	</div>
+
+</div>
+</div>
+</div>
+</div>

@@ -2,6 +2,15 @@
 
 ### X.X.X | New Version
 
+### 0.0.3
+* Clients documents
+* Background color on ng-scope
+* Filter Portal
+* Stats on client
+* Delete portals
+* View of portals
+* Aded wiston as logger
+
 ### 0.0.2
 * Created window to see coment of clients
 * Create module for stats

@@ -3,6 +3,14 @@ body {
 	background:#599DC4 !important;	
 }
 
+div.ng-scope{
+	background:#599DC4 !important;
+}
+
+div.md-dialog-container.ng-scope{
+	background:transparent !important;
+}
+
 .logincontainer {	
 	padding-top: 80px;
     margin-bottom: 80px;

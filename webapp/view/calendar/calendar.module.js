@@ -3,7 +3,7 @@
  */
 var calendar = angular.module("calendar", ['ngRoute']);
 
-calendar.controller("calendarController", function appController($scope, $location, $rootScope, userService) {
+calendar.controller("calendarController", function appController($scope, $location,$http, $rootScope, userService) {
 
   $scope.$on('$viewContentLoaded', function() {
 
@@ -19,7 +19,19 @@ calendar.controller("calendarController", function appController($scope, $locati
       businessHours: true,
       eventLimit: true,
       events: function(start, end, tt, callback) {
-        callback([]);
+        debugger
+        $http({
+              url: '/agenda/getCitas',
+              method: "POST",
+              data: {'gestorId': userService.getUser()._id}
+            })
+            .then(function(result) {
+              if (result.data.length) {
+                callback(result.data);
+              } else {
+                newToast($mdToast, "Error cargando agenda.");
+              }
+            });
       },
       eventClick: function(calEvent, jsEvent, view) {
 

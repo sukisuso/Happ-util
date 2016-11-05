@@ -15,23 +15,24 @@ client.controller("clientController", function appController($scope, $routeParam
 
 	function loadPages() {
 		$http({
-				url: '/transaction/getAllTransactions',
-				method: "POST",
-				data: {
-					'clientId': $scope.idClient,
-					'init': ($scope.paging.current - 1) * $scope.paging.size,
-					'page': $scope.paging.size,
-					'filters': $scope.filters
-				}
-			})
-			.then(function(result) {
-				$scope.rowCollection = [];
-				$scope.paging.total = Math.floor(result.data.total / $scope.paging.size);
-				if (result.data.total % $scope.paging.size) {
-					$scope.paging.total++;
-				}
-				$scope.rowCollection = $scope.rowCollection.concat(result.data.clients);
-			});
+			url: '/transaction/getAllTransactions',
+			method: "POST",
+			data: {
+				'clientId': $scope.idClient,
+				'init': ($scope.paging.current - 1) * $scope.paging.size,
+				'page': $scope.paging.size,
+				'filters': $scope.filters
+			}
+		})
+		.then(function(result) {
+			$scope.rowCollection = [];
+			$scope.paging.total = Math.floor(result.data.total / $scope.paging.size);
+			if (result.data.total % $scope.paging.size) {
+				$scope.paging.total++;
+			}
+			$scope.rowCollection = $scope.rowCollection.concat(result.data.clients);
+			$scope.loadStats();
+		});
 	}
 
 	$scope.idClient = $routeParams.param1;
@@ -134,10 +135,6 @@ client.controller("clientController", function appController($scope, $routeParam
 				}
 			});
 
-	};
-
-	$scope.openStats = function deleteItem(row) {
-		$location.url("/stats/" + $scope.idClient + "/");
 	};
 
 	$scope.showComent = function(ev) {
@@ -260,21 +257,74 @@ client.controller("clientController", function appController($scope, $routeParam
 		};
 	}
 
-	$scope.EditTransPetition =function (entity){
+	$scope.EditTransPetition =function (trans){
 		if (userService.getUser()._id) {
 			$http({
-					url: '/clients/updateEntity',
+					url: '/transaction/updateTransactions',
 					method: "POST",
-					data: {'entity': entity, '_id':$scope.clientInfo._id}
+					data: trans
 				})
 				.then(function(result) {
 					if (result.data) {
-						$scope.clientInfo.entity= entity;
-						newToast($mdToast, "Portal creado.");
+						newToast($mdToast, "Transacción actualizada.");
 					} else {
-						newToast($mdToast, "Error creando portal.");
+						newToast($mdToast, "Error actualizando transacción.");
 					}
 				});
 		}
 	}
+
+	$scope.openPortal = function openPortal(){
+   		window.open("http://localhost/portal/"+$scope.clientInfo.entity);
+   }
+
+    $scope.deletePortal= function deletePortal(){
+   		$http({
+			url: '/clients/deleteEntity',
+			method: "POST",
+			data: {
+				'_id': $scope.clientInfo._id
+			}
+		})
+		.then(function(result) {
+			 delete $scope.clientInfo.entity;
+		});
+   }
+
+
+   $scope.loadStats= function () {
+   		$http({
+			url: '/transaction/getAll',
+			method: "POST",
+			data: {
+				'clientId': $scope.idClient
+			}
+		})
+		.then(function(result) {
+			var serie = {};
+			serie.name = $scope.clientInfo.name;
+			serie.data = [];
+			var stat = 0;
+			var categories =[];
+
+			result.data.forEach(function(value,index,arr){
+				if (value.type === "Ingreso") {
+					stat += value.cant;
+				} else {
+					stat -= value.cant;
+				}
+				var date = new Date(value.date);
+				date.setDate(date.getDate() + 1);
+				 
+				serie.data.push([date.getTime(), stat]); 
+				categories.push(date.getDate()+"/"+(date.getMonth()+1));
+			});
+			
+			loadStatsDefault('statscontent', categories, serie);
+		});
+   }
+
+   $scope.openDocumentos = function openDocumentos() {
+		$location.url("/documents/"+$scope.idClient);
+	};
 });

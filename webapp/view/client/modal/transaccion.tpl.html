@@ -1,0 +1,65 @@
+
+<md-dialog aria-label="Nuevo cliente">
+  <form ng-cloak ng-submit="answer()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Nueva Transaccion</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+          <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label">Fecha</label>
+              <div class="col-xs-4">
+                <input maxlength="20" datetime="yyyy-MM-dd HH:mm:ss" ng-model="tran.date" class="form-control" type="date"  id="example-text-input" required>
+              </div>
+              <label for="example-text-input" class="col-xs-2 col-form-label">Cantidad</label>
+              <div class="col-xs-4">
+              <input step="0.01" maxlength="30" ng-model="tran.cant" class="form-control" type="number" id="example-text-input" required>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label class="col-xs-2 col-form-label">Tipo</label>
+              <div class="col-xs-10">
+              <select ng-model="tran.type" class="form-control" required>
+                <option></option>
+                <option>Gasto</option>
+                <option>Ingreso</option>
+              </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label class="col-xs-2 col-form-label">Descripcion</label>
+               <div class="col-xs-10">
+              <input ng-model="tran.desc" class="form-control" type="text" id="example-text-input" required>
+              </div>
+          </div>
+          <div class="row">
+               <label for="example-text-input" class="col-xs-2 col-form-label">Validar transacción</label>
+               <div class="col-xs-1">
+                 <input ng-model="tran.validation" type="checkbox">
+               </div>
+          </div>
+    </div>                   
+      
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+    <md-button type="submit">
+       Descargar factura
+      </md-button>
+      <span flex></span>
+      <md-button type="submit">
+       Guardar
+      </md-button>
+      <md-button ng-click="cancel()">
+        Cerrar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

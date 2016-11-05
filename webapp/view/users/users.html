@@ -39,20 +39,18 @@
 		<thead>
 		<tr>
 			<th>Nombre</th>
-			<th>Typo</th>
+			<th>Tipo</th>
 			<th>Dni</th>
 			<th>Telefono</th>
-			<th>Direccion</th>
 			<th>Cod. Postal</th>
 		</tr>
 		</thead>
 		<tbody>
 		<tr ng-repeat="row in rowCollection">
-			<td>{{row.name}}</td>
+			<td>{{row.name +" "+row.surname}}</td>
 			<td>{{row.type}}</td>
 			<td>{{row.dni}}</td>
 			<td>{{row.telefono}}</td>
-			<td>{{row.direccion}}</td>
 			<td>{{row.postal}}</td>
 			<td>
 				<button type="button" ng-click="openClientModule(row)" class="btn btn-sm btn-primary">

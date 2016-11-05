@@ -1,5 +1,6 @@
 
-var app = angular.module("app", ['ngRoute','login', 'main', 'users', 'calendar', 'client', 'mensajes', 'stats']);
+var app = angular.module('app', ['ngRoute','login', 'main', 'users', 'calendar',
+							'client', 'mensajes', 'portal', 'documents']);
 
 app.config(function($routeProvider){
 	$routeProvider.when("/", {
@@ -36,6 +37,17 @@ app.config(function($routeProvider){
 		 templateUrl : "view/stats/stats.html",
 		 controller : "statsController"
 	})
+
+	.when("/portal", {
+		 templateUrl : "view/portal/portal.html",
+		 controller : "portalController"
+	})
+
+	.when("/documents/:param1/", {
+		 templateUrl : "view/documents/documents.html",
+		 controller : "documentsController"
+	})
+
  	.otherwise({ redirectTo : "/"})
 });
 

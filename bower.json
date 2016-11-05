@@ -21,7 +21,8 @@
     "angular": "^1.5.8",
     "angular-route": "1.5.8",
     "angular-material": "^1.1.1",
-    "material-angular-paging": "*"
+    "material-angular-paging": "*",
+    "highcharts": "^5.0.2"
   },
   "resolutions": {
     "angular": "^1.5.8",

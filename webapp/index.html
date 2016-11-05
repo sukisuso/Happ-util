@@ -14,7 +14,7 @@
 <body ng-app="app">
 	<div  ng-controller="appController">
 		<header id="header" ng-if="isLogged">
-			<nav class="navbar navbar-light bg-faded" style="background: white;border-radius:0px;">
+			<nav class="navbar navbar-light bg-faded" style="background: white;border-radius:0px; border-color:blue;">
 			  <a class="navbar-brand" ng-href="#/main">Happ Software.</a>
 			  <ul class="nav navbar-nav">
 			    <li class="nav-item active">
@@ -34,7 +34,7 @@
 	
 		<div ng-view></div>
 	
-		<footer class="navbar navbar-fixed-bottom" style="background: white;border-radius:0px;">
+		<footer class="navbar navbar-fixed-bottom" style="background: white;border-radius:0px; border-color:blue;">
 			<div class="container" >
  				Happ. Copyright &copy; 2016. Jesús Juan Aguilar [<a href="mailto:jesusjuanaguilar@gmail.com">jesusjuanaguilar@gmail.com</a>]
 			</div>
@@ -56,6 +56,8 @@
     <script src='/js/lib_calendar/moment.min.js'></script>
     <script src='/js/lib_calendar/fullcalendar.min.js'></script>
     <script type="text/javascript" src="js/shared.js"></script>
+    <script src="bower_components/highcharts/highcharts.js"></script>
+
 	
 	<script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="js/angular.service.js"></script>
@@ -65,6 +67,7 @@
 	<script type="text/javascript" src="view/calendar/calendar.module.js"></script>
 	<script type="text/javascript" src="view/client/client.module.js"></script>
 	<script type="text/javascript" src="view/mensajes/mensajes.module.js"></script>
-	<script type="text/javascript" src="view/stats/stats.module.js"></script>
+	<script type="text/javascript" src="view/portal/portal.module.js"></script>
+	<script type="text/javascript" src="view/documents/documents.module.js"></script>
 </body>
 </html>

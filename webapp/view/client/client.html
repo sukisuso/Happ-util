@@ -188,14 +188,23 @@
 		</div> 
 	</div> 
 
+    <div class="row" style="margin-bottom:50px;">
+        <div class="panel  panel-info">
+             <div class="panel-heading" style="font-size:30px;">Estadística</div>
+             <div class="panel-body" style="padding:20px;padding-left:50px;padding-right:50px;">
+             <div id="statscontent" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div> 
+        </div> 
+    </div> 
+
 	<div class="row" style="margin-bottom:50px;">
 		<div class="panel  panel-info">
 			 <div class="panel-heading" style="font-size:30px;">Otras opciones
 			 <div class="panel-body" style="padding:20px;padding-left:50px;padding-right:50px;">
-			 <button ng-click="openStats()" type="button" class="btn btn-lg btn-primary"></span>Estadisticas</button>
+             <button ng-click="openDocumentos()" type="button" class="btn btn-lg btn-primary"></span>Documentos</button>
 			 <button ng-if="!clientInfo.entity" type="button" ng-click="createPortal()" class="btn btn-lg btn-primary"></span>Crear portal</button>
-              <button ng-if="clientInfo.entity" type="button" class="btn btn-lg btn-primary"></span>Ver portal</button>
-               <button ng-if="clientInfo.entity" type="button" class="btn btn-lg btn-primary"></span>Eliminar portal</button>
+              <button ng-click="openPortal()" ng-if="clientInfo.entity" type="button" class="btn btn-lg btn-primary"></span>Ver portal</button>
+               <button ng-click="deletePortal()" ng-if="clientInfo.entity" type="button" class="btn btn-lg btn-primary"></span>Eliminar portal</button>
 			 <button type="button" class="btn btn-lg btn-primary"></span>Generar informe</button>
 			 <button type="button" class="btn btn-lg btn-primary"></span>Facturación</button>
 			</div> </div>

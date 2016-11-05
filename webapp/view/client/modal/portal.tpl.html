@@ -1,0 +1,33 @@
+<md-dialog style="width: 600px;">
+  <form ng-cloak ng-submit="answer()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Crear portal para {{ cliente }}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content >
+      <div class="form-group row" style="padding:20px;width: 550px;">
+              <label for="example-text-input" class="col-xs-2 col-form-label">Nombre del portal</label>
+              <div class="col-xs-8">
+                <input ng-model="portalentity" class="form-control" type="text" required>
+              </div>
+          </div>                 
+      
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+       <md-button type="submit">
+       Guardar
+      </md-button>
+      <md-button ng-click="cancel()">
+        Cerrar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
