@@ -18,7 +18,8 @@ function StartPaths(app, mongoose){
 	app.post('/transaction/deleteTransactions', deleteTransactions);
 	app.post('/transaction/updateTransactions', updateTransactions);
 	app.post('/transaction/getAllTransactionsForStats', getAllTransactionsForStats);
-	
+	app.post('/transaction/getAllTransactionsNoValidadas', getAllTransactionsNoValidadas);
+	app.post('/transaction/getNumberTransactionsNoValidadas', getNumberTransactionsNoValidadas);
 }
 
 function getAllTransactions(req, res) {
@@ -127,6 +128,41 @@ function getAllTransactionsForStats(req, res) {
 		}
 	});
 
+}
+
+function getAllTransactionsNoValidadas (req, res){
+	Transaction.count({"gestorId" : req.body.gestorId, validation:null}, function( err, count){
+	   Transaction.find({"gestorId" : req.body.gestorId, validation:null},{} ,{sort:{date:-1}, skip:req.body.init, limit: req.body.page }) 
+	   	.populate('clientId')
+	   	.exec(function (err, docs) {
+			if (!err) {
+				var response = {};
+				response.total =count;
+				response.docs = docs;
+				res.setHeader('Content-Type', 'application/json');
+				res.send(JSON.stringify(response));
+				res.end();
+			} else {
+				res.status(500).send({ error: '[Error: Servers Mongo] Fallo recuperando datos.'});
+				res.end();
+			}
+		});
+	});
+}
+
+function getNumberTransactionsNoValidadas(req, res){
+	Transaction.count({"gestorId" : req.body.gestorId, validation:null}, function( err, count){
+	   
+			if (!err) {
+				var response = count;
+				res.setHeader('Content-Type', 'application/json');
+				res.send(JSON.stringify(response));
+				res.end();
+			} else {
+				res.status(500).send({ error: '[Error: Servers Mongo] Fallo recuperando datos.'});
+				res.end();
+			}
+	});
 }
 
 exports.startPaths = StartPaths;

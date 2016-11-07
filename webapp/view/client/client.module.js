@@ -38,10 +38,10 @@ client.controller("clientController", function appController($scope, $routeParam
 	$scope.idClient = $routeParams.param1;
 	$scope.clientInfo = null;
 	$scope.$on('$viewContentLoaded', function() {
-		if (!userService.getUser()._id) {
+		if (!userService.auth()) {
 			$location.url("/");
 		} else {
-
+			$scope.$parent.isLogged= true;
 			$http({
 				url: '/clients/getOneClient',
 				method: "POST",

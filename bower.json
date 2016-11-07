@@ -22,7 +22,8 @@
     "angular-route": "1.5.8",
     "angular-material": "^1.1.1",
     "material-angular-paging": "*",
-    "highcharts": "^5.0.2"
+    "highcharts": "^5.0.2",
+    "material-calendar": "^0.2.14"
   },
   "resolutions": {
     "angular": "^1.5.8",

@@ -2,6 +2,11 @@
 
 ### X.X.X | New Version
 
+### 0.0.4
+* Sesion in Local Storage
+* Calendar module
+* Validate module
+
 ### 0.0.3
 * Clients documents
 * Background color on ng-scope

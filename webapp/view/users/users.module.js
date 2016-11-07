@@ -32,8 +32,10 @@ users.controller("usersController", function appController($scope, $location, $m
   }
 
   $scope.$on('$viewContentLoaded', function() {
-    if (!userService.getUser()._id) {
+    if (!userService.auth()) {
       $location.url("/");
+    }else{
+      $scope.$parent.isLogged= true;
     }
   });
 

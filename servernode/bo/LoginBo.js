@@ -16,6 +16,7 @@ function StartPaths(app, mongoose){
 
 	app.post('/login/processLogin', processLogin);
 	app.post('/login/insertUser', insertUser);
+	app.post('/login/processAuth', processAuth);
 }
 
 function processLogin(req, res) {
@@ -61,6 +62,25 @@ function authentication (username, password, res){
 	       		res.send(false);
 		   		res.end();
 		   }
+		}
+     }
+   );
+}
+
+function processAuth(req, res){
+	 User.findOne({'user': req.body.user, 'pasword': req.body.pasword},
+     function(err, user) {
+
+       if (err){
+       	 res.send(false);
+	  	 res.end();
+       }
+
+       if (!user){
+       		res.send(false);
+	   		res.end();
+       }else {
+			res.send(user);
 		}
      }
    );

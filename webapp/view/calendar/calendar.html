@@ -5,12 +5,30 @@
 		 <div class="panel-heading" style="font-size:30px;">Calendario
 		 <div style="float: right;">
 			 <button ng-click="goBack()" type="button" class="btn btn-default"><span style="color:green; margin-right:2px;margin-left:15px;"class="glyphicon glyphicon-arrow-left"></span>Volver</button> 
-			 <button type="button" class="btn btn-default"><span style="color:green; margin-left:5px;"class="glyphicon glyphicon-plus"></span>Nuevo cita</button></div>
+			 <button ng-click="newDateModal()" type="button" class="btn btn-default"><span style="color:green; margin-left:5px;"class="glyphicon glyphicon-plus"></span>Nuevo cita</button>
+			  <button ng-click="deleteDate()" type="button" class="btn btn-default"><span style="color:green; margin-left:5px;"class="glyphicon glyphicon-remove"></span>Limpiar día</button></div>
 		 </div>
 		 <div class="panel-body" style="padding:20px;padding-left:50px;padding-right:50px;">
  
-			<div class="row"  style="background:white;max-width: 930px;">
-				<div id='calendar' style='background: white; max-width: 900px; margin: 0 auto; padding-top:10px; padding-bottom:15px;'></div>
+			<div class="row">
+				<calendar-md id="calendar" flex layout layout-fill
+				  calendar-direction="direction"
+				  on-prev-month="prevMonth"
+				  on-next-month="nextMonth"
+				  on-day-click="dayClick"
+				  title-format="'MMMM y'"
+				  ng-model='selectedDate'
+				  week-starts-on="firstDayOfWeek"
+				  data-start-month="{{dataStartMonth}}"
+				  data-start-year="{{dataStartYear}}"
+				  tooltips="tooltips"
+				  day-format="dayFormat"
+				  day-label-format="'EEE'"
+				  day-label-tooltip-format="'EEEE'"
+				  day-tooltip-format="'fullDate'"
+				  day-content="setDayContent"
+				  disable-future-selection="false"
+				  ></calendar-md>
 			</div> 
 		</div> 
 </div> 

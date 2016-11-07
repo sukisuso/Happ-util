@@ -42,3 +42,21 @@ function loadStatsDefault (id, categorias, serie) {
         series: [serie]
     });
 }
+
+
+function securitySesionTime (date){
+    if(!date){
+        return false;
+    }
+    var actualDate = new Date();
+    var sesionDate = new Date(date);
+
+    var diff = Math.abs(sesionDate - actualDate);
+    var minutes = Math.floor((diff/1000)/60);
+    debugger
+    if(minutes > 15){
+        return false;
+    }else{
+        return true;
+    }
+}

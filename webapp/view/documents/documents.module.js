@@ -17,10 +17,10 @@ documents.controller("documentsController", function ($scope,$location,$routePar
 	};
 
 	$scope.$on('$viewContentLoaded', function() {
-		if (!userService.getUser()._id) {
+		if (!userService.auth()) {
 			$location.url("/");
 		} else {
-
+			$scope.$parent.isLogged= true;
 			$http({
 				url: '/clients/getOneClient',
 				method: "POST",

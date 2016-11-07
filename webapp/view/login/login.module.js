@@ -8,6 +8,15 @@ login.controller("loginController", function loginController($scope, $location,$
 	$scope.nick = "";
 	$scope.pass = "";
 
+	$scope.$on('$viewContentLoaded', function() {
+	    if (!userService.auth()) {
+	      $location.url("/");
+	    }else{
+	      $scope.$parent.isLogged= true;
+	      $location.url("/main");
+	    }
+	});
+
 	$scope.loginUser = function (isLoged) {
 		
 		$http({

@@ -11,7 +11,7 @@
                <button ng-click="loadModuleCalendar()" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span style="font-size: 75px;" class="glyphicon glyphicon-calendar"></span><br>Calendario</button>
          </div>
          <div class="col-sm-3">
-               <button type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span style="font-size: 75px;" class="glyphicon glyphicon-list"></span><br>Opciones</button>
+               <button ng-click="loadModuleSettings()" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span style="font-size: 75px;" class="glyphicon glyphicon-list"></span><br>Opciones</button>
          </div>
       </div>
       <div class="row" style="margin-top:20px;">
@@ -19,7 +19,7 @@
             <button ng-click="loadModulePortal()" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span class="glyphicon glyphicon-transfer" style="font-size: 75px;"></span><br>Portales</button>
          </div>
          <div class="col-sm-3">
-            <button ng-click="" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span class="glyphicon glyphicon-ok" style="font-size: 75px;"></span><br>Validar</button>
+            <button ng-click="loadModuleValidar()" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span class="glyphicon glyphicon-ok" style="font-size: 75px;"></span><br>Validar<div ng-if="noValidadas!=0" style="float:right; background:transparent !important;color:red;">{{noValidadas}}</div></button>
          </div>
          <div class="col-sm-3">
             <button ng-click="" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span class="glyphicon glyphicon-resize-small" style="font-size: 75px;"></span><br>Comparar</button>

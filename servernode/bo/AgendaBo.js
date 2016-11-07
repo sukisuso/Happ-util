@@ -20,18 +20,47 @@ function StartPaths(app, mongoose){
 }
 
 function getCitas(req, res) {
-	res.send([]);
-	res.end();
+	 Agenda.find({"gestorId" : req.body.gestorId},{} ,{sort:{date:1}},function (err, docs) {
+		if (!err) {
+			res.setHeader('Content-Type', 'application/json');
+			res.send(JSON.stringify(docs));
+			res.end();
+		} else {
+			res.status(500).send({ error: '[Error: Servers Mongo] Fallo recuperando datos.'});
+			res.end();
+		}
+	});
 }
 
 function insertCita(req, res) {
+	var sv = new Agenda({
+
+		gestorId: req.body.gestorId,
+	    desc: req.body.desc,
+	    date: req.body.date
+	});
+
+	
+	sv.save(function (err) {
+		if (!err) {
+			res.send(true);
+			res.end();
+		} else {
+			res.status(500).send({ error: '[Error: Servers Mongo] No se ha podido insertar.'});
+			res.end();
+		}
+	});
 	
 
 }
 
 
 function deleteCita(req, res) {
-	
+	Agenda.findOneAndRemove({ _id: ObjectId(req.body._id) }, function(err) {
+	  if (err) throw err;
+	  	res.send(true);
+		res.end();
+	});
 }
 
 exports.startPaths = StartPaths;

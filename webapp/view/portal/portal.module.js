@@ -18,9 +18,11 @@ portal.controller("portalController", function ($scope,$location, $mdDialog,$htt
   	};
 
     $scope.$on('$viewContentLoaded', function() {
-	    if(!userService.getUser()._id){
+	    if(!userService.auth()){
 	        $location.url("/");
-	    }   
+	    } else {
+	    	$scope.$parent.isLogged= true;
+	    }
 	});
 
     function loadPages() {
