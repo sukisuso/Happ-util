@@ -8,7 +8,7 @@ function newToast(scope, msg){
 }
 
 
-function loadStatsDefault (id, categorias, serie) {
+function loadStatsDefault (id, serie) {
     Highcharts.chart(id, {
          chart: {
                 zoomType: 'x'
@@ -53,7 +53,7 @@ function securitySesionTime (date){
 
     var diff = Math.abs(sesionDate - actualDate);
     var minutes = Math.floor((diff/1000)/60);
-    debugger
+
     if(minutes > 15){
         return false;
     }else{

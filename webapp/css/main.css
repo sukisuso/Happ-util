@@ -11,6 +11,10 @@ div.md-dialog-container.ng-scope{
 	background:transparent !important;
 }
 
+html.md-default-theme, html, body.md-default-theme, body {
+	background:#599DC4;
+}
+
 .logincontainer {	
 	padding-top: 80px;
     margin-bottom: 80px;

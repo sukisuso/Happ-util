@@ -47,31 +47,24 @@
 		</thead>
 		<tbody>
 		<tr ng-repeat="row in rowCollection">
-			<td>{{row.name +" "+row.surname}}</td>
+			<td><a ng-click="openClientModule(row)" onmouseover='' style="cursor: pointer;">{{row.name +" "+row.surname}} </a></td>
 			<td>{{row.type}}</td>
 			<td>{{row.dni}}</td>
 			<td>{{row.telefono}}</td>
 			<td>{{row.postal}}</td>
 			<td>
-				<button type="button" ng-click="openClientModule(row)" class="btn btn-sm btn-primary">
-					<i class="glyphicon glyphicon-list-alt"></i>
-				</button>
-			</td>
-			<td>
-				<button type="button" ng-click="" class="btn btn-sm btn-default">
-					<i class="glyphicon glyphicon-envelope"></i>
-				</button>
-			</td>
-			<td>
-				<button type="button" ng-click="openEditWindow(row)" class="btn btn-sm btn-info">
-					<i class="glyphicon glyphicon-pencil"></i>
-				</button>
-			</td>
-			<td>
-				<button type="button" ng-click="deleteItem(row)" class="btn btn-sm btn-danger">
-					<i class="glyphicon glyphicon-remove-circle"></i>
-				</button>
-			</td>
+                <div class="btn-group">
+                        <button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu stay-open pull-right" role="menu">
+                        <li ng-click="openClientModule(row)"><a role="menuitem">Ver</a></li>    
+                        <li ng-click=""><a role="menuitem">Enviar mensaje</a></li>  
+                        <li ng-click="openEditWindow(row)"><a role="menuitem">Editar</a></li>  
+                        <li ng-click="deleteItem(row)"><a role="menuitem">Eliminar</a></li>   
+                        </ul>
+                </div>
+            </td>
 		</tr>
 		</tbody>
 	</table>

@@ -238,7 +238,7 @@ client.controller("clientController", function appController($scope, $routeParam
 				fullscreen: false
 			})
 			.then(function(data) {
-				$scope.EditTransPetition(data)
+				$scope.EditTransPetitionEntity(data)
 			});
 	};
 
@@ -257,16 +257,17 @@ client.controller("clientController", function appController($scope, $routeParam
 		};
 	}
 
-	$scope.EditTransPetition =function (trans){
+	$scope.EditTransPetitionEntity =function (trans){
 		if (userService.getUser()._id) {
 			$http({
-					url: '/transaction/updateTransactions',
+					url: '/clients/updateEntity',
 					method: "POST",
-					data: trans
+					data: {'entity': trans, '_id': $scope.clientInfo._id}
 				})
 				.then(function(result) {
 					if (result.data) {
 						newToast($mdToast, "Transacción actualizada.");
+						$scope.clientInfo.entity = trans;
 					} else {
 						newToast($mdToast, "Error actualizando transacción.");
 					}
@@ -305,7 +306,6 @@ client.controller("clientController", function appController($scope, $routeParam
 			serie.name = $scope.clientInfo.name;
 			serie.data = [];
 			var stat = 0;
-			var categories =[];
 
 			result.data.forEach(function(value,index,arr){
 				if (value.type === "Ingreso") {
@@ -317,10 +317,9 @@ client.controller("clientController", function appController($scope, $routeParam
 				date.setDate(date.getDate() + 1);
 				 
 				serie.data.push([date.getTime(), stat]); 
-				categories.push(date.getDate()+"/"+(date.getMonth()+1));
 			});
-			
-			loadStatsDefault('statscontent', categories, serie);
+			debugger
+			loadStatsDefault('statscontent', serie);
 		});
    }
 

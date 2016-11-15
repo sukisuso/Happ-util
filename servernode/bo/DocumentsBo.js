@@ -23,6 +23,7 @@ function StartPaths(app, mongoose, log){
 
 function upload(req, res) {
 	logger.log('info', '/documents/upload - ' +req.file.originalname);
+
 	var sv = new Document({
 		clientId: req.body.clientId,
 		gestorId: req.body.gestorId,

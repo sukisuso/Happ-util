@@ -2,6 +2,14 @@
 
 ### X.X.X | New Version
 
+### 0.0.5
+* Fix bug debugInfoEnabled
+* Cron helper
+* Tmp cleaner 
+* Templates of PDF's
+* Fix bug when create webportal
+* Menus dropdown form in tables 
+
 ### 0.0.4
 * Sesion in Local Storage
 * Calendar module

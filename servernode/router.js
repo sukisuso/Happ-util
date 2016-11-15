@@ -12,6 +12,7 @@ var client = require('./bo/ClientBo');
 var transactions = require('./bo/TransactionsBo');
 var agenda = require('./bo/AgendaBo');
 var documents = require('./bo/DocumentsBo');
+var pdf = require('./bo/PdfBo');
 
 function route(app) {
 	
@@ -26,6 +27,7 @@ function route(app) {
 	transactions.startPaths(app, mongoose, log);
 	agenda.startPaths(app, mongoose, log);
 	documents.startPaths(app, mongoose, log);
+	pdf.startPaths(app, mongoose, log);
 
 	log.info('Routes loaded.');
 }

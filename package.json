@@ -6,11 +6,15 @@
   "dependencies": {
     "body-parser": "^1.14.1",
     "crypto": "0.0.3",
+    "del": "2.2.2",
+    "ejs": "2.5.2",
     "express": "^4.13.3",
     "helmet": "2.3.0",
+    "jsreport": "1.1.0",
     "mongoose": "4.6.4",
     "mongoose-file": "0.0.2",
     "multer": "1.2.0",
+    "node-cron": "1.1.2",
     "winston": "2.2.0"
   }
 }

@@ -38,16 +38,16 @@
 			<td>{{row.entity}}</td>
 			<td>{{row.name +" "+ row.surname}}</td>
 			<td>
-				<button type="button" ng-click="openPortal(row)" class="btn btn-sm btn-default">
-					<i class="glyphicon glyphicon-globe"></i>
-				</button>
-			</td>
-			<td>
-				<button type="button" ng-click="deletePortal(row)" class="btn btn-sm btn-danger">
-					<i class="glyphicon glyphicon-remove-circle"></i>
-				</button>
-			</td>
-			
+                <div class="btn-group">
+                        <button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu stay-open pull-right" role="menu">
+                        <li ng-click="openPortal(row)"><a role="menuitem">Abrir portal</a></li>    
+                        <li ng-click="deletePortal(row)"><a role="menuitem">Eliminar portal</a></li>   
+                        </ul>
+                </div>
+            </td>
 		</tr>
 		</tbody>
 	</table>

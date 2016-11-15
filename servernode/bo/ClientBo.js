@@ -139,7 +139,6 @@ function updateEntity (req, res ){
 	  		res.send(false);
 			res.end();
 	  	}else{
-
 		  	Client.findOneAndUpdate({ _id: ObjectId(req.body._id) },
 			{ 
 			 	entity:req.body.entity

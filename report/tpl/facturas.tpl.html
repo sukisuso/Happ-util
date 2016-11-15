@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<style>
+    .title {
+        background-color: #BDBDBD !important;
+    }
+    .subtitle{
+      background-color: #A9D0F5 !important; 
+    }
+    td.header{
+        background-color: #A9D0F5 !important;
+    }
+    td.headerSing{
+        background-color: #BDBDBD !important;
+    }
+    td.facturacion{
+        background-color: #FAAC58 !important;
+    }
+</style>
+
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 title" style="height:70px;">
+        <div class="col-xs-8 title">
+      <h1 style="margin-top:5px;"><%= it.gestor %></h1> </div>
+      <div class="col-xs-4 title">
+       <img style="width:75px;float:right; height:50px; margin-top:5px;"  src="http://www.audiolis.com/sites/default/files/blog/imagenes/icono-administrativo.png">
+      </div>
+      </div>
+    </div>
+    <div class="row">
+      <h3 class="text-center">Facturación del cliente</h3>
+    </div>
+    <div class="row">
+      <h6 class="text-right">10 de Septiembre de 2016, Valencia</h3>
+    </div>
+    <div class="row">
+      <table class="table table-striped table-bordered subtitle">
+            <tr>
+              <td class="header"><strong>Nombre</strong> </td>
+              <td class="header"><strong>Apellidos</strong> </td>
+              <td class="header"><strong>Telefono</strong> </td>
+              <td class="header"><strong>Email</strong> </td>
+              <td class="header"><strong>DNI</strong> </td>
+            </tr> 
+            <tr>
+              <td><%= it.clientName %> </td>
+              <td><%= it.clientSurname %> </td>
+              <td><%= it.phone %></td>
+              <td><%= it.email %></td>
+              <td><%= it.dni %></td>
+            </tr> 
+          </table> 
+    </div>
+    <div class="row">
+      <table class="table table-striped table-bordered">
+            <tr>
+              <td class="header" width="50%"><strong>Codigo Postal</strong> </td>
+              <td class="header" width="50%"><strong>Tipo cliente</strong> </td>
+            </tr> 
+            <tr>
+              <td><%= it.postal %> </td>
+              <td><%= it.type %></td>
+            </tr> 
+          </table> 
+    </div>
+    <div class="row">
+      <table class="table table-striped table-bordered">
+            <tr>
+              <td class="header" width="50%"><strong>Direccion</strong> </td>
+              <td class="header" width="50%"><strong>Localidad</strong> </td>
+            </tr> 
+            <tr>
+              <td><%= it.direccion %></td>
+              <td><%= it.localidad %></td>
+            </tr> 
+          </table> 
+    </div>
+    
+    <div class="row">
+      <table class="table table-striped table-bordered">
+            <tr>
+              <td class="header" width="50%"><strong>Nº Deudores</strong> </td>
+              <td class="header" width="50%"><strong>Cuota</strong></td>
+            </tr> 
+            <tr>
+              <td><%= it.numero %> </td>
+              <td><%= it.cuota %></td>
+            </tr> 
+          </table> 
+    </div>
+   
+   <div class="row">
+      <table class="table table-striped table-bordered">
+            <tr>
+              <td class="header"><strong>Comentario</strong></td>
+            </tr> 
+            <tr>
+              <td><%= it.comentario %> </td>
+            </tr> 
+          </table> 
+    </div>
+   
+    <div style='page-break-before: always;'></div>
+    <div class="row">
+      <h4 class="text-center">Facturación</h3>
+    </div>
+
+    <div class="row">
+      <table class="table table-striped table-bordered" style="page-break-inside:auto">
+            <tr>
+              <td class="facturacion"><strong>Fecha</strong> </td>
+              <td class="facturacion"><strong>Cantidad</strong> </td>
+              <td class="facturacion"><strong>Tipo</strong> </td>
+              <td class="facturacion"><strong>Descriptcion</strong> </td>
+            </tr> 
+            <tr>
+            <% it.facturacion.forEach(function (fac){ %>
+              <td><%= fac.date %> </td>
+              <td><%= fac.cant %> </td>
+              <td><%= fac.type %></td>
+              <td><%= fac.desc %></td>
+            </tr> 
+            <% }); %>
+          </table> 
+    </div>
+
+  </div>
+  </div>
+</body>
+</html>

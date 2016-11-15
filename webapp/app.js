@@ -2,7 +2,9 @@
 var app = angular.module('app', ['ngRoute','login', 'main', 'users', 'calendar',
 							'client', 'mensajes', 'portal', 'documents', 'settings', 'validar']);
 
-app.config(function($routeProvider){
+app.config(function($routeProvider, $compileProvider){
+ 	$compileProvider.debugInfoEnabled(true);
+
 	$routeProvider.when("/", {
 		 templateUrl : "view/login/login.html",
 		 controller : "loginController"

@@ -25,16 +25,16 @@
 			<td>{{row.subject}}</td>
 			<td>{{row.status}}</td>
 			<td>
-				<button type="button" ng-click="" class="btn btn-sm btn-default">
-					<i class="glyphicon glyphicon-eye-close"></i>
-				</button>
-			</td>
-			<td>
-				<button type="button" ng-click="deleteItem(row)" class="btn btn-sm btn-danger">
-					<i class="glyphicon glyphicon-remove-circle"></i>
-				</button>
-			</td>
-			
+                <div class="btn-group">
+                        <button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu stay-open pull-right" role="menu">
+                        <li ng-click=""><a role="menuitem">Ver</a></li>    
+                        <li ng-click="deleteItem(row)"><a role="menuitem">Eliminar</a></li>   
+                        </ul>
+                </div>
+            </td>			
 		</tr>
 		</tbody>
 	</table>

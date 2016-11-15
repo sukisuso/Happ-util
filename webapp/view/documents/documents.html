@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="documentsController">
 
 	<div class="row">
 	<div class="panel  panel-info">
@@ -11,7 +11,7 @@
 		 		<form ng-submit="updateFile()" enctype="multipart/form-data">
 		 		<div class="form-group">
 				  <label class="control-label">Select File</label>
-				  <input type="file" onchange="angular.element(this).scope().filesChanged(this)" type="file" class="form-control" accept="application/pdf" style="margin-bottom:5px;">
+				  <input type="file" onchange="debugger;angular.element(this).scope().filesChanged(this)" type="file" class="form-control" accept="application/pdf" style="margin-bottom:5px;">
 				  <input class="btn btn-default" type="submit" value="Upload file">
 				  </div>
 				</form>
@@ -30,15 +30,15 @@
 							<td>{{row.date | date : "dd.MM.y"}}</td>
 							<td >{{row.filename}}</td>
 							<td>{{row.size}}</td>
-                            <td>
-                                <button type="button" ng-click="viewDoc(row)" class="btn btn-sm btn-info">
-                                    <i class="glyphicon glyphicon-modal-window"></i>
-                                </button>
-                            </td>
-                            <td>
-                                <button type="button" ng-click="deleteDocument(row)" class="btn btn-sm btn-danger">
-                                    <i class="glyphicon glyphicon-remove-circle"></i>
-                                </button>
+							<td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu stay-open pull-right" role="menu">
+                                        <li ng-click="viewDoc(row)"><a role="menuitem">Ver</a></li> <li ng-click="deleteDocument(row)"><a role="menuitem">Eliminar</a></li>
+                                        </ul>
+                                    </div>
                             </td>
 						</tr>
 						</tbody>
