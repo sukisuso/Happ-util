@@ -89,7 +89,6 @@ calendar.controller("calendarController", function appController($scope, $locati
   });
 
   $scope.deleteDate = function (){
-    debugger
     if($scope.dayToDelete){
      $http({
         url: '/agenda/deleteCita',

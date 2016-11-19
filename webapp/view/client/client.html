@@ -205,8 +205,7 @@
 			 <button ng-if="!clientInfo.entity" type="button" ng-click="createPortal()" class="btn btn-lg btn-primary"></span>Crear portal</button>
               <button ng-click="openPortal()" ng-if="clientInfo.entity" type="button" class="btn btn-lg btn-primary"></span>Ver portal</button>
                <button ng-click="deletePortal()" ng-if="clientInfo.entity" type="button" class="btn btn-lg btn-primary"></span>Eliminar portal</button>
-			 <button type="button" class="btn btn-lg btn-primary"></span>Generar informe</button>
-			 <button type="button" class="btn btn-lg btn-primary"></span>Facturación</button>
+			 <button ng-click="downloadFacturacion()" type="button" class="btn btn-lg btn-primary"></span>Facturación</button>
 			</div> </div>
 		</div> 
 	</div> 

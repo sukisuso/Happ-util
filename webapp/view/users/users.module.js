@@ -56,7 +56,7 @@ users.controller("usersController", function appController($scope, $location, $m
       });
   };
 
-  function DialogController($scope, $mdDialog) {
+  function DialogController($scope, $mdDialog, $http, userService) {
     $scope.user = {};
     $scope.user.name = "";
     $scope.user.surname = "";
@@ -80,8 +80,20 @@ users.controller("usersController", function appController($scope, $location, $m
     };
 
     $scope.answer = function() {
-      $mdDialog.hide(this.user);
+      if($scope.isPdf === true){
+        $scope.isPdf = false;
+      }else {
+        $mdDialog.hide(this.user);
+      }
     };
+
+    $scope.downloadFile = function () {
+      $scope.isPdf =true;
+      if($scope.newUser.$valid){
+        $scope.user['gestor'] = userService.getUser().user;
+        downloadPDF ($http, '/pdf/getNewUserDoc', $scope.user, "nuevo-usuario.pdf");
+      } 
+    }
   }
 
   $scope.goBack = function goBack() {

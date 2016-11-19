@@ -60,3 +60,16 @@ function securitySesionTime (date){
         return true;
     }
 }
+
+
+function downloadPDF ($http, URL, DATA, filename){
+    $http({
+      url: URL ,method: "POST", data: DATA , responseType:'arraybuffer'
+    }).then(function(result) {
+        var blob=new Blob([result.data], {type: 'application/pdf'});
+        var link=document.createElement('a');
+        link.href=window.URL.createObjectURL(blob);
+        link.download=filename;
+        link.click();
+    });
+}

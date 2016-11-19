@@ -2,6 +2,10 @@
 
 ### X.X.X | New Version
 
+### 0.0.6
+* Facturation pdf
+* New user pdf
+
 ### 0.0.5
 * Fix bug debugInfoEnabled
 * Cron helper

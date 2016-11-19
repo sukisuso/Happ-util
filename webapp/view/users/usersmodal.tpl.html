@@ -1,6 +1,6 @@
 
 <md-dialog aria-label="Nuevo cliente">
-  <form ng-cloak ng-submit="answer()">
+  <form ng-cloak ng-submit="answer()" name="newUser">
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>Nuevo cliente</h2>
@@ -83,7 +83,7 @@
     </md-dialog-content>
 
     <md-dialog-actions layout="row">
-      <md-button md-autofocus>
+      <md-button md-autofocus type="submit" ng-click="downloadFile()">
         Descargar alta
       </md-button>
 

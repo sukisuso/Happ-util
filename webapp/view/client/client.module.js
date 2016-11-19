@@ -318,12 +318,21 @@ client.controller("clientController", function appController($scope, $routeParam
 				 
 				serie.data.push([date.getTime(), stat]); 
 			});
-			debugger
 			loadStatsDefault('statscontent', serie);
 		});
    }
 
    $scope.openDocumentos = function openDocumentos() {
 		$location.url("/documents/"+$scope.idClient);
+	};
+
+	$scope.downloadFacturacion = function downloadFacturacion(){
+		$scope.clientInfo['gestor'] = userService.getUser().user;
+		downloadPDF ($http, '/pdf/getFacturacion', $scope.clientInfo, "facturacion.pdf");
+	};
+
+	$scope.downloadEstadoCliente = function downloadEstadoCliente(){
+		$scope.clientInfo['gestor'] = userService.getUser().user;
+		downloadPDF ($http, '/pdf/getEstado', $scope.clientInfo, "estado.pdf");
 	};
 });

@@ -11,6 +11,7 @@
     "express": "^4.13.3",
     "helmet": "2.3.0",
     "jsreport": "1.1.0",
+    "moment": "2.16.0",
     "mongoose": "4.6.4",
     "mongoose-file": "0.0.2",
     "multer": "1.2.0",
