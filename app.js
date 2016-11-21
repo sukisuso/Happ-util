@@ -22,7 +22,7 @@ app.disable('x-powered-by');
 router.redirect(app);
 
 app.listen(3000);
-logger.info('Quevec is listening on 3000');
+logger.info('Happ-util is listening on 3000');
 
 
 //Cleaner - cron

@@ -20,8 +20,7 @@ client.controller("clientController", function appController($scope, $routeParam
 			data: {
 				'clientId': $scope.idClient,
 				'init': ($scope.paging.current - 1) * $scope.paging.size,
-				'page': $scope.paging.size,
-				'filters': $scope.filters
+				'page': $scope.paging.size
 			}
 		})
 		.then(function(result) {
