@@ -17,7 +17,7 @@ module.exports = function (mongoose) {
 	    comentario: { type: String, required: false },
 	    numero: { type: Number, required: false },
 	    cuota: { type: Number, required: false },
-	    entity: { type: String, required: false, index: { unique: true } }
+	    entity: { type: String, required: false, index: { unique: true,  sparse: true } }
 	});
 
     return mongoose.model('Client', Client);

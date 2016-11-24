@@ -2,6 +2,10 @@
 
 ### X.X.X | New Version
 
+### 0.0.7
+* Settings crud
+* Webportal app
+
 ### 0.0.6
 * Facturation pdf
 * New user pdf
