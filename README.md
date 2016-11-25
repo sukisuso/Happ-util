@@ -2,6 +2,9 @@
 
 ### X.X.X | New Version
 
+### 0.0.8
+* Webportal modules configurable
+
 ### 0.0.7
 * Settings crud
 * Webportal app

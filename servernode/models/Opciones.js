@@ -7,7 +7,6 @@ module.exports = function (mongoose) {
 	    portales: {
 	    	info:{ type: Boolean, required: false },
 	    	transacciones:{ type: Boolean, required: false },
-	    	stats:{ type: Boolean, required: false },
 	    	mensajes:{ type: Boolean, required: false },
 	    	documentos:{ type: Boolean, required: false }
 	    }
