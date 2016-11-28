@@ -15,22 +15,20 @@
 			<th>Fecha</th>
 			<th>Origen</th>
 			<th>Asunto</th>
-			<th>Estado</th>
 		</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="row in rowCollection">
-			<td>{{row.date}}</td>
-			<td>{{row.origin}}</td>
-			<td>{{row.subject}}</td>
-			<td>{{row.status}}</td>
+		<tr ng-repeat="row in rowCollection"  ng-class="row.estado ? 'leido': 'noLeido'">
+			<td>{{row.date | date : "dd.MM.y"}}</td>
+			<td>{{row.clientId.name}}</td>
+			<td>{{row.asunto}}</td>
 			<td>
                 <div class="btn-group">
                         <button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
                         <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu stay-open pull-right" role="menu">
-                        <li ng-click=""><a role="menuitem">Ver</a></li>    
+                        <li ng-click="openMsgWindow(row)"><a role="menuitem">Ver</a></li>    
                         <li ng-click="deleteItem(row)"><a role="menuitem">Eliminar</a></li>   
                         </ul>
                 </div>

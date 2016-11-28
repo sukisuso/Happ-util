@@ -5,7 +5,7 @@
             <button ng-click="loadModuleUsers()" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span class="glyphicon glyphicon-user" style="font-size: 75px;"></span><br>Clientes</button>
          </div>
          <div class="col-sm-3">
-               <button ng-click="loadModuleMensajes()"type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span style="font-size: 75px;" class="glyphicon glyphicon-envelope"></span><br>Mensajes</button>
+               <button ng-click="loadModuleMensajes()"type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span style="font-size: 75px;" class="glyphicon glyphicon-envelope"></span><br>Mensajes<div ng-if="newMensajes!=0" style="font-size: 14px;float:right; background:transparent !important;color:red;">{{newMensajes}}</div></button>
          </div>
          <div class="col-sm-3">
                <button ng-click="loadModuleCalendar()" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span style="font-size: 75px;" class="glyphicon glyphicon-calendar"></span><br>Calendario</button>
@@ -19,7 +19,7 @@
             <button ng-click="loadModulePortal()" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span class="glyphicon glyphicon-transfer" style="font-size: 75px;"></span><br>Portales</button>
          </div>
          <div class="col-sm-3">
-            <button ng-click="loadModuleValidar()" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span class="glyphicon glyphicon-ok" style="font-size: 75px;"></span><br>Validar<div ng-if="noValidadas!=0" style="float:right; background:transparent !important;color:red;">{{noValidadas}}</div></button>
+            <button ng-click="loadModuleValidar()" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span class="glyphicon glyphicon-ok" style="font-size: 75px;"></span><br>Validar<div ng-if="noValidadas!=0" style="font-size: 14px;float:right; background:transparent !important;color:red;">{{noValidadas}}</div></button>
          </div>
          <div class="col-sm-3">
             <button ng-click="" type="button" class="btn btn-default btn-xlarge text-center" style="width:200px;"><span class="glyphicon glyphicon-resize-small" style="font-size: 75px;"></span><br>Comparar</button>

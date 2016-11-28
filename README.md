@@ -2,6 +2,9 @@
 
 ### X.X.X | New Version
 
+### 0.0.9
+* Full messages module
+
 ### 0.0.8
 * Webportal modules configurable
 

@@ -5,8 +5,9 @@ var main = angular.module("main", ['ngRoute']);
 
 main.controller("mainController", function appController($scope,$location, userService, $http){
 
-	$scope.UserName= "";
-	$scope.noValidadas=0;
+	$scope.UserName = "";
+	$scope.noValidadas = 0;
+	$scope.newMensajes = 0;
 	$scope.$on('$viewContentLoaded', function() {
 		if(userService.auth()){
 			$scope.$parent.isLogged= true;
@@ -18,6 +19,14 @@ main.controller("mainController", function appController($scope,$location, userS
 			})
 			.then(function(result) {
 				$scope.noValidadas = result.data;
+			});
+
+			$http({
+				url: '/messages/count/'+userService.getUser()._id,
+				method: "POST",
+			})
+			.then(function(result) {
+				$scope.newMensajes = result.data;
 			});
 		}else{
 			$location.url("/");

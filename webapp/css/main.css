@@ -113,3 +113,13 @@ html.md-default-theme, html, body.md-default-theme, body {
 .esIngreso{
 	color: green;
 }
+
+.leido{
+	background: white !important;
+	font: 15px Georgia, serif;	
+}
+
+.noLeido{
+	background: #BDBDBD !important;
+	font: italic bold 15px Georgia, serif;	
+}

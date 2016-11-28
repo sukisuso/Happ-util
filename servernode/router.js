@@ -14,6 +14,7 @@ var agenda = require('./bo/AgendaBo');
 var documents = require('./bo/DocumentsBo');
 var pdf = require('./bo/PdfBo');
 var opciones = require('./bo/OpcionesBo');
+var mensajes = require('./bo/MensajesBo');
 
 function route(app) {
 	
@@ -30,6 +31,7 @@ function route(app) {
 	documents.startPaths(app, mongoose, log);
 	pdf.startPaths(app, mongoose, log);
 	opciones.startPaths(app, mongoose, log);
+	mensajes.startPaths(app, mongoose, log);
 
 	log.info('Routes loaded.');
 }
