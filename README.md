@@ -2,6 +2,9 @@
 
 ### X.X.X | New Version
 
+### 1.0.0
+* Register new users
+
 ### 0.0.9
 * Full messages module
 

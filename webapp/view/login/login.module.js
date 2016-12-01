@@ -3,7 +3,7 @@
  */
 var login = angular.module("login", ['ngRoute', 'ngMaterial', 'ngMessages']);
 
-login.controller("loginController", function loginController($scope, $location,$rootScope,$mdToast, $http, userService){
+login.controller("loginController", function loginController($scope, $location,$rootScope,$mdDialog,$mdToast, $http, userService){
 
 	$scope.nick = "";
 	$scope.pass = "";
@@ -36,5 +36,53 @@ login.controller("loginController", function loginController($scope, $location,$
         });
 	};
 
+	$scope.registrarseModal = function(ev) {
+		$mdDialog.show({
+				controller: DialogController,
+				templateUrl: 'view/login/newUserModal.tpl.html',
+				parent: angular.element(document.body),
+				targetEvent: ev,
+				clickOutsideToClose: true,
+				fullscreen: false
+			})
+			.then(function(data) {
+				$scope.newUserPetition(data)
+			});
+	};
+
+	function DialogController($scope, $mdDialog) {
+		$scope.newUser = {};
+		$scope.hide = function() {
+			$mdDialog.hide();
+		};
+
+		$scope.cancel = function() {
+			$mdDialog.cancel();
+		};
+
+		$scope.answer = function() {
+			$mdDialog.hide(this.newUser);
+		};
+	}
+
+	$scope.newUserPetition = function newUserPetition(data) {
+		if(data.password !== data.password2){
+			newToast($mdToast, "Las contraseñas no coinciden");
+			return;
+		}
+
+		$http({
+	        url: '/login/insertUser',
+	        method: "POST",
+	        data: data
+	    })
+       .then(function(result) {
+       		if(!result.data){
+       			newToast($mdToast, "Existe un usuario con ese nombre.");
+       		}else{
+       			newToast($mdToast, "Usuario creado correctamente.");
+       		}
+        });
+	};
 });
 

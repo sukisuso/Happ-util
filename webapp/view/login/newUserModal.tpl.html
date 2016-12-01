@@ -1,0 +1,97 @@
+
+<md-dialog aria-label="Nuevo cliente">
+  <form ng-cloak ng-submit="answer()" name="newUser">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Nuevo gestor</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+          <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label">Nombre Gestora</label>
+              <div class="col-xs-4">
+                <input maxlength="50" ng-model="newUser.gestora" class="form-control" type="text" required>
+              </div>
+              <label for="example-text-input" class="col-xs-2 col-form-label">Username</label>
+              <div class="col-xs-4">
+              <input maxlength="30" ng-model="newUser.user" class="form-control" type="text" required>
+              </div>
+          </div>
+           <div class="form-group row">
+             <label for="example-text-input" class="col-xs-2 col-form-label">Contraseña</label>
+              <div class="col-xs-4">
+                <input maxlength="30" ng-model="newUser.password" class="form-control" type="password" required>
+              </div>
+              <label for="example-text-input" class="col-xs-2 col-form-label">Repita contraseña</label>
+              <div class="col-xs-4">
+              <input maxlength="30" ng-model="newUser.password2" class="form-control" type="password" required>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label">Nombre</label>
+              <div class="col-xs-4">
+                <input maxlength="20" ng-model="newUser.name" class="form-control" type="text" required>
+              </div>
+              <label for="example-text-input" class="col-xs-2 col-form-label">Apellidos</label>
+              <div class="col-xs-4">
+              <input maxlength="30" ng-model="newUser.surname" class="form-control" type="text" required>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label">Email</label>
+              <div class="col-xs-4">
+                <input ng-model="newUser.email" class="form-control" type="email" id="example-text-input" required>
+              </div>
+              <label for="example-text-input" class="col-xs-2 col-form-label">DNI</label>
+              <div class="col-xs-4">
+              <input maxlength="9" ng-model="newUser.dni" class="form-control" type="text" >
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label">Numero de cuenta</label>
+              <div class="col-xs-10">
+                <input ng-model="newUser.acount" class="form-control" type="text" id="example-text-input">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label">Telefono</label>
+              <div class="col-xs-4">
+                <input min="100000000" max="999999999" ng-model="newUser.telefono" class="form-control" type="number" id="example-text-input">
+              </div>
+              <label for="example-text-input" class="col-xs-2 col-form-label">Codigo Postal</label>
+              <div class="col-xs-4">
+              <input min="10000" max="99999" ng-model="newUser.postal" class="form-control" type="number" id="example-text-input" >
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="example-text-input" class="col-xs-2 col-form-label">Direccion</label>
+              <div class="col-xs-4">
+                <input maxlength="20" ng-model="newUser.direccion" class="form-control" type="text" >
+              </div>
+              <label for="example-text-input" class="col-xs-2 col-form-label">Localidad</label>
+              <div class="col-xs-4">
+              <input maxlength="30" ng-model="newUser.localidad" class="form-control" type="text"  >
+              </div>
+          </div>
+         
+    </div>
+      
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button type="submit">
+       Guardar
+      </md-button>
+      <md-button ng-click="cancel()">
+        Cerrar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

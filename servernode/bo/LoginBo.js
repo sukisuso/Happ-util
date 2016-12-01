@@ -26,19 +26,44 @@ function processLogin(req, res) {
 function insertUser(req, res) {
 	var sv = new User({
 		user: req.body.user,
-	    pasword: req.body.pasword,
-	    roles:req.body.roles    
+	    pasword: crypt.encrypt(req.body.password),
+	    roles:req.body.roles ,   
+	    email: req.body.email  ,
+        dni: req.body.dni  ,
+        direccion: req.body.direccion  ,
+        localidad: req.body.localidad  ,
+        telefono: req.body.telefono  ,
+        postal: req.body.postal  ,
+        gestora: req.body.gestora  ,
+        account: req.body.account  ,
 	});
-	
-	sv.save(function (err) {
-		if (!err) {
-			res.send(true);
-			res.end();
-		} else {
-			res.status(500).send({ error: '[Error: Servers Mongo] No se ha podido insertar.'});
-			res.end();
+
+	User.findOne({'user': req.body.user},
+     function(err, user) {
+
+       if (err){
+       	 res.send(false);
+	  	 res.end();
+       }
+       debugger
+       if (user){
+       		res.send(false);
+	   		res.end();
+       }else {
+	      sv.save(function (err) {
+	      		debugger
+				if (!err) {
+					res.send(true);
+					res.end();
+				} else {
+					res.send(false);
+	   				res.end();
+				}
+			});	
 		}
-	});	
+     }
+   );
+	
 }
 
 function authentication (username, password, res){
